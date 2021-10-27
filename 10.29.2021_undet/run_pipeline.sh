@@ -1,8 +1,10 @@
 #!/bin/bash
 
 #### START User Input #####
-read1_file='r1.fastq.gz'
-read2_file='r2.fastq.gz'
+#read1_file='r1.fastq.gz'
+#read2_file='r2.fastq.gz'
+read1_file='/grid/kinney/home/jkinney/big_data/illumina_runs/21_vakoc/Undetermined_S0_R1_001.fastq.gz'
+read2_file='/grid/kinney/home/jkinney/big_data/illumina_runs/21_vakoc/Undetermined_S0_R2_001.fastq.gz'
 bc1='AATCCA'
 bc2='TTGAAC'
 const_seq_read1='AAGTGTCCCAGGAGACTATAGC'

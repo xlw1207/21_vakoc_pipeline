@@ -9,7 +9,7 @@ res1=$(date +%s.%N)
 echo " "
 echo "Merging two reads on the sequence_id and barcode."
 echo "-> write the merge file in $3"
-awk 'NR==FNR{a[$1,$2]=$3;next} ($1,$2) in a{print $0, a[$1,$2]}' $1 $2>$3
+awk 'NR==FNR{a[$1,$2]=$3;next} ($1,$2) in a{print $0, a[$1,$2]}' $2 $1>$3
 
 res2=$(date +%s.%N)
 dt=$(echo "$res2 - $res1" | bc)

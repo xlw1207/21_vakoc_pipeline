@@ -9,8 +9,9 @@ bc1='AATCCA'
 bc2='TTGAAC'
 const_seq_read1='AAGTGTCCCAGGAGACTATAGC'
 const_seq_read2='GCCATTAAGTCTTGAGTTACTTGTCT'
-process_read_seqid_bc=true
-merge_seqid_bc_reads=true
+process_read_seqid_bc=false
+merge_seqid_bc_reads=false
+rev_comp_rev2=true
 #### END User Input #####
 
 
@@ -42,6 +43,12 @@ then
         ./intermediate/merge_read1_read2.csv
 fi
 
+if $rev_comp_rev2
+then
+    bash ./reverse_comp_read2.sh \
+        ./intermediate/merge_read1_read2.csv \
+        ./intermediate/merge_read1_read2_rev.csv
+fi
 
 res2=$(date +%s.%N)
 dt=$(echo "$res2 - $res1" | bc)

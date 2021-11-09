@@ -9,15 +9,18 @@ bc1='AATCCA'
 bc2='TTGAAC'
 const_seq_read1='AAGTGTCCCAGGAGACTATAGC'
 const_seq_read2='GCCATTAAGTCTTGAGTTACTTGTCT'
-process_read_seqid_bc=false
-merge_seqid_bc_reads=false
+process_read_seqid_bc=true
+merge_seqid_bc_reads=true
 rev_comp_rev2=true
+assem_reads=true
 #### END User Input #####
 
 
 res1=$(date +%s.%N)
 mkdir -p intermediate
 
+echo " "
+echo "User Inputs:"
 echo "Read1 file: $read1_file"
 echo "Read2 file: $read2_file"
 echo "Designed barcode 1: $bc1"
@@ -48,6 +51,13 @@ then
     bash ./reverse_comp_read2.sh \
         ./intermediate/merge_read1_read2.csv \
         ./intermediate/merge_read1_read2_rev.csv
+fi
+
+if $assem_reads
+then
+    bash ./assemble_reads.sh \
+        ./intermediate/merge_read1_read2_rev.csv \
+        ./intermediate/assembled_reads.csv
 fi
 
 res2=$(date +%s.%N)

@@ -24,7 +24,7 @@ echo "-> get seq_id, barcode, seq from fastq file"
 echo "-> match barcodes to the designed barcodes" 
 echo "-> match constant sequence" 
 echo "-> drop seqs with N char" 
-echo "-> write the read1_seq_bc.csv in $output" 
+echo "-> write the $1 in $output" 
 zcat $read_file|awk  '(/@/) {printf "%s\t %s\t", int(NR/4)+1, \
                       substr($0, length($0)-5, length($0)); \
                       getline; printf "%s\n", $0}'| \
